@@ -4,7 +4,7 @@
     "paths": {
       "@just-ui/*": ["./packages/*/src"],
       "@just-ui/core/*": ["./packages/core/src/*"],
-      "@just-ui/styles/*": ["./packages/styles/src/*"]
+      "@just-ui/react/*": ["./packages/react/src/*"]
     }
   }
 }

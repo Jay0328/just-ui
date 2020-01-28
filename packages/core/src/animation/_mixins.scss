@@ -1,0 +1,80 @@
+@use "./functions";
+@use "./variables";
+
+@mixin collapse {
+  .just-transition-collapse {
+    height: 0;
+    overflow: hidden;
+    transition: functions.standard(height, variables.$standard-duration);
+
+    &--entered {
+      height: auto;
+      overflow: visible;
+    }
+
+    &--hidden {
+      visibility: hidden;
+    }
+
+    &__wrapper {
+      display: flex;
+    }
+
+    &__inner {
+      width: 100%;
+    }
+  }
+}
+
+@mixin fade {
+  .just-transition-fade {
+    opacity: 0;
+
+    &--entering,
+    &--entered {
+      opacity: 1;
+    }
+
+    &--entering {
+      transition: functions.enter(opacity, variables.$entering-duration);
+    }
+
+    &--exiting {
+      transition: functions.exit(opacity, variables.$exiting-duration);
+    }
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+}
+
+@mixin grow {
+  .just-transition-grow {
+    opacity: 0;
+    transform: scale(0.75, 0.5625);
+
+    &--entering {
+      opacity: 1;
+      transform: scale(1, 1);
+      transition:
+        functions.enter(opacity, variables.$entering-duration),
+        functions.enter(transform, variables.$shortest-duration);
+    }
+
+    &--entered {
+      opacity: 1;
+      transform: none;
+    }
+
+    &--exiting {
+      transition:
+        functions.enter(opacity, variables.$exiting-duration),
+        functions.enter(transform, variables.$shortest-duration);
+    }
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+}

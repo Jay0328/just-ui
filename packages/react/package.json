@@ -1,0 +1,36 @@
+{
+  "name": "@just-ui/react",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Jay Chen <gcobs135102@gmail.com>",
+  "homepage": "https://github.com/Jay0328/just-ui#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "esm/index.js",
+  "typings": "esm/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jay0328/just-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jay0328/just-ui/issues"
+  },
+  "scripts": {
+    "clean": "npm run build:clean",
+    "prebuild": "npm run build:clean && node ../../tools/build/sync-publish-files-to-dist.js",
+    "build": "tsc --project ./tsconfig.app.json && tsc --project ./tsconfig.app.json -m esnext -outDir ./dist/esm",
+    "postbuild": "node ../../tools/build/sync-dist-to-node_modules.js",
+    "build:clean": "node ../../tools/build/clean.js"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.17",
+    "@types/react-transition-group": "^4.2.3",
+    "clsx": "^1.0.4",
+    "react-transition-group": "^4.3.0",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  }
+}

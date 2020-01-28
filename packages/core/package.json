@@ -1,0 +1,19 @@
+{
+  "name": "@just-ui/core",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Jay Chen <gcobs135102@gmail.com>",
+  "homepage": "https://github.com/Jay0328/just-ui#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "esm/index.js",
+  "typings": "esm/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jay0328/just-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jay0328/just-ui/issues"
+  }
+}

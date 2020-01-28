@@ -14,7 +14,7 @@
       "always",
       {
         "ignore": ["first-nested"],
-        "ignoreAtRules": ["import", "include", "if", "else"]
+        "ignoreAtRules": ["use", "import", "include", "if", "else"]
       }
     ],
 		"at-rule-no-vendor-prefix": true,

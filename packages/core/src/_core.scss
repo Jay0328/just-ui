@@ -1,0 +1,7 @@
+@use "./animation/mixins" as animation;
+
+@mixin just-core() {
+  @include animation.collapse;
+  @include animation.fade;
+  @include animation.grow;
+}

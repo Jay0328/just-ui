@@ -1,0 +1,12 @@
+$standard-curve-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$deceleration-curve-timing-function: cubic-bezier(0, 0, 0.2, 1) !default;
+$acceleration-curve-timing-function: cubic-bezier(0.4, 0, 1, 1) !default;
+$sharp-curve-timing-function: cubic-bezier(0.4, 0, 0.6, 1) !default;
+
+$shortest-duration: 150ms !default;
+$shorter-duration: 200ms !default;
+$short-duration: 250ms !default;
+$standard-duration: 300ms !default;
+$complex-duration: 375ms !default;
+$entering-duration: 225ms !default;
+$exiting-duration: 195ms !default;

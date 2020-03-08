@@ -12,7 +12,7 @@ export type TransitionKeys =
   | 'addEndListener'
   | TransitionHandlerKeys;
 
-export type TransitionTimeout = _TransitionProps['timeout'] | 'auto';
+export type TransitionTimeout = NonNullable<_TransitionProps['timeout']> | 'auto';
 
 export interface TransitionElementProps {
   className?: string;

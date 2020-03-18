@@ -2,6 +2,7 @@ import React, { HTMLAttributes, forwardRef, useRef } from 'react';
 import clsx from 'clsx';
 import Transition, { TransitionProps as _TransitionProps, TransitionStatus } from 'react-transition-group/Transition';
 import { ANIMATION_DURATIONS } from '@just-ui/core/animation/variables';
+import { reflow } from '@just-ui/core/animation/reflow';
 import { getAutoHeightDuration } from '@just-ui/core/animation/get-auto-height-duration';
 import { TransitionProps, TransitionElementProps } from '../typings';
 import { GetTransitionDurationsOptions, getTransitionDuration } from '../get-transition-duration';
@@ -46,6 +47,8 @@ const Collapse = forwardRef<HTMLElement, CollapseProps>(function Collapse(props,
     in: inProp,
     timeout: (timeout === 'auto' ? null : timeout) as _TransitionProps['timeout'],
     onEnter(node, isAppearing) {
+      reflow(node);
+
       node.style.height = collapsedHeight;
 
       if (onEnter) {

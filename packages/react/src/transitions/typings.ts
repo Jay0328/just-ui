@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import { TransitionProps as _TransitionProps, TransitionActions } from 'react-transition-group/Transition';
 
 export type TransitionHandlerKeys = 'onEnter' | 'onEntering' | 'onEntered' | 'onExit' | 'onExiting' | 'onExited';
@@ -23,5 +23,6 @@ export interface TransitionProps
   extends Pick<_TransitionProps, Exclude<TransitionKeys, 'timeout'>>,
     TransitionActions,
     TransitionElementProps {
+  children?: ReactNode;
   timeout?: TransitionTimeout;
 }

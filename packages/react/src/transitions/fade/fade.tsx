@@ -1,7 +1,8 @@
-import React, { ReactElement, cloneElement, isValidElement } from 'react';
+import React, { cloneElement, isValidElement } from 'react';
 import Transition, { TransitionProps as _TransitionProps, TransitionStatus } from 'react-transition-group/Transition';
 import clsx from 'clsx';
-import { TransitionProps, TransitionElementProps } from '../typings';
+import { reflow } from '@just-ui/core/animation/reflow';
+import { TransitionProps } from '../typings';
 import { getTransitionDuration } from '../get-transition-duration';
 
 const classes: { [key in TransitionStatus]?: string } = {
@@ -15,17 +16,17 @@ const defaultTimeout = {
   exit: 195
 };
 
-export interface FadeProps extends TransitionProps {
-  children?: ReactElement<TransitionElementProps>;
-}
+export type FadeProps = TransitionProps;
 
 function Fade(props: FadeProps) {
-  const { children, className, in: inProp, onEnter, onExit, style = {}, timeout = defaultTimeout, ...rest } = props;
+  const { children, className, in: inProp, onEnter, onExit, style, timeout = defaultTimeout, ...rest } = props;
   const transitionProps: _TransitionProps = {
     appear: true,
     in: inProp,
     timeout: timeout === 'auto' ? defaultTimeout : timeout,
     onEnter(node, isAppearing) {
+      reflow(node);
+
       node.style.transitionDuration = getTransitionDuration({ style, timeout }, { mode: 'enter' });
 
       if (onEnter) {
@@ -45,7 +46,7 @@ function Fade(props: FadeProps) {
   return (
     <Transition {...transitionProps}>
       {state =>
-        isValidElement(children)
+        isValidElement<FadeProps>(children)
           ? cloneElement(children, {
               className: clsx(
                 'just-transition-fade',

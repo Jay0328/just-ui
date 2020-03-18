@@ -2,6 +2,7 @@ import React, { ReactElement, isValidElement, cloneElement } from 'react';
 import Transition, { TransitionProps as _TransitionProps, TransitionStatus } from 'react-transition-group/Transition';
 import clsx from 'clsx';
 import * as animationFunctions from '@just-ui/core/animation/functions';
+import { reflow } from '@just-ui/core/animation/reflow';
 import { getAutoHeightDuration } from '@just-ui/core/animation/get-auto-height-duration';
 import { TransitionProps, TransitionElementProps } from '../typings';
 import { useTransitionAutoTimeout } from '../use-transition-auto-timeout';
@@ -44,6 +45,8 @@ function Grow(props: GrowProps) {
     in: inProp,
     timeout: (timeout === 'auto' ? null : timeout) as _TransitionProps['timeout'],
     onEnter(node, isAppearing) {
+      reflow(node);
+
       setTransition(node, 'enter');
 
       if (onEnter) {
